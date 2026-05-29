@@ -2,7 +2,10 @@
 using System;
 using System.Runtime.CompilerServices;
 using CoderunMaximumCost;
+using TestTasks;
 
-Roman.Foo();
+AddTwoNumbersClass.Foo();
+//Prefix.Foo();
+//Roman.Foo();
 //TwoSum.Foo();
 //Palindrome.CheckString();

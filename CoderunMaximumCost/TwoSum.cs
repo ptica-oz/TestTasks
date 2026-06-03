@@ -3,10 +3,15 @@
     using System;
     using System.Linq;
 
+    delegate void Message();
+
     internal class TwoSum
     {
-        public static void Foo()
+        public Message msg;
+
+        public  void Foo()
         {
+            msg = new Message(Person.Do);
             while(true)
             {
                 Console.Write("Введите числа: ");
@@ -31,18 +36,43 @@
 
         public static int[] GetTwoSum(int[] nums, int target)
         {
-            for(int i = 0; i < nums.Length - 1; i++)
+            Dictionary<int, int> dic = new();
+            for(int i = 0; i < nums.Length; i++)
             {
-                for(int j = i + 1; j < nums.Length; j++)
+                if (dic.ContainsKey(nums[i]))
                 {
-                    if (nums[i] + nums[j] == target)
-                    {
-                        return new[] { i, j};
-                    }
+                    return new[] { i, dic[nums[i]] };
                 }
+
+                dic[target - nums[i]] = i;
             }
-            int[] indexes = new[] { 0, 0 };
-            return indexes;
+            return new[] { -1, -1 };
+        }
+
+
+    }
+
+    public class Person
+    {
+        public string name = "Tom";
+        public int age = 1;
+        public Person()
+        {
+                
+        }
+
+        public static void Do()
+        { }
+    }
+
+    public class Employee : Person
+    {
+        public string Compani { get; set; }
+        
+        public override bool Equals(object? obj)
+        {
+            if (obj is Person person) return name == person.name;
+            return false;
         }
     }
 }

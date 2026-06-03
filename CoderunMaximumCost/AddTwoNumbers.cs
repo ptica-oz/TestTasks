@@ -1,10 +1,7 @@
 ﻿namespace TestTasks
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
     using System.Text;
-    using System.Threading.Tasks;
 
     internal class AddTwoNumbersClass
     {
@@ -26,7 +23,7 @@
                     break;
                 }
 
-                var result = AddTwoNumbers(GetListNode(firstInput), GetListNode(secondInput));
+                var result = AddTwoNumbers(ListNode.GetListNode(firstInput), ListNode.GetListNode(secondInput));
                 StringBuilder sb = new();
                 while(result != null)
                 {
@@ -72,29 +69,6 @@
             }
 
             return headNode;
-        }
-
-        private static ListNode GetListNode(string str)
-        {
-            var values = str.Split(',');
-            ListNode currentNode = null;
-            for(int i = values.Length - 1; i >= 0; i--)
-            {
-                var newListNode = new ListNode(int.Parse(values[i]), currentNode);
-                currentNode = newListNode;
-            }
-            return currentNode;
-        }
-    }
-
-    public class ListNode
-    {
-        public int val;
-        public ListNode next;
-        public ListNode(int val = 0, ListNode next = null)
-        {
-            this.val = val;
-            this.next = next;
         }
     }
 }
